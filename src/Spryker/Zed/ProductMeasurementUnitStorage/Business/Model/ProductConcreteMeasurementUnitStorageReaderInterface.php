@@ -5,14 +5,14 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Client\ProductMeasurementUnitStorage\Storage;
+namespace Spryker\Zed\ProductMeasurementUnitStorage\Business\Model;
 
 interface ProductConcreteMeasurementUnitStorageReaderInterface
 {
     /**
      * @param int $idProduct
      *
-     * @return \Generated\Shared\Transfer\SpyProductConcreteMeasurementUnitStorageEntityTransfer|null
+     * @return \Generated\Shared\Transfer\ProductConcreteMeasurementUnitStorageTransfer
      */
-    public function findProductConcreteMeasurementUnitStorageEntity($idProduct);
+    public function getProductConcreteMeasurementUnitStorageByIdProduct($idProduct);
 }
