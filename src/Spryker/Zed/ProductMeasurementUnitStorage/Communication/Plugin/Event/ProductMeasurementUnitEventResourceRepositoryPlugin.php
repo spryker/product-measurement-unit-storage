@@ -7,7 +7,7 @@
 
 namespace Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Event;
 
-use Orm\Zed\ProductMeasurementUnit\Persistence\Map\SpyProductMeasurementSalesUnitTableMap;
+use Orm\Zed\ProductMeasurementUnit\Persistence\Map\SpyProductMeasurementUnitTableMap;
 use Spryker\Shared\ProductMeasurementUnitStorage\ProductMeasurementUnitStorageConfig;
 use Spryker\Zed\EventBehavior\Dependency\Plugin\EventResourceRepositoryPluginInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
@@ -18,7 +18,7 @@ use Spryker\Zed\ProductMeasurementUnit\Dependency\ProductMeasurementUnitEvents;
  * @method \Spryker\Zed\ProductMeasurementUnitStorage\Business\ProductMeasurementUnitStorageFacadeInterface getFacade()
  * @method \Spryker\Zed\ProductMeasurementUnitStorage\Communication\ProductMeasurementUnitStorageCommunicationFactory getFactory()
  */
-class ProductConcreteMeasurementUnitEventResourcePlugin extends AbstractPlugin implements EventResourceRepositoryPluginInterface
+class ProductMeasurementUnitEventResourceRepositoryPlugin extends AbstractPlugin implements EventResourceRepositoryPluginInterface
 {
     /**
      * Specification:
@@ -30,7 +30,7 @@ class ProductConcreteMeasurementUnitEventResourcePlugin extends AbstractPlugin i
      */
     public function getResourceName(): string
     {
-        return ProductMeasurementUnitStorageConfig::PRODUCT_CONCRETE_MEASUREMENT_UNIT_RESOURCE_NAME;
+        return ProductMeasurementUnitStorageConfig::PRODUCT_MEASUREMENT_UNIT_RESOURCE_NAME;
     }
 
     /**
@@ -47,10 +47,9 @@ class ProductConcreteMeasurementUnitEventResourcePlugin extends AbstractPlugin i
     public function getData(array $ids = []): array
     {
         if (!empty($ids)) {
-            return $this->getFacade()->getSalesUnitsByIds($ids);
+            return $this->getFacade()->findAllProductMeasurementUnitTransfers();
         }
-
-        return $this->getFacade()->getSalesUnits();
+        return $this->getFacade()->findProductMeasurementUnitTransfers($ids);
     }
 
     /**
@@ -63,7 +62,7 @@ class ProductConcreteMeasurementUnitEventResourcePlugin extends AbstractPlugin i
      */
     public function getEventName(): string
     {
-        return ProductMeasurementUnitEvents::PRODUCT_CONCRETE_MEASUREMENT_UNIT_PUBLISH;
+        return ProductMeasurementUnitEvents::PRODUCT_MEASUREMENT_UNIT_PUBLISH;
     }
 
     /**
@@ -76,6 +75,6 @@ class ProductConcreteMeasurementUnitEventResourcePlugin extends AbstractPlugin i
      */
     public function getIdColumnName(): string
     {
-        return SpyProductMeasurementSalesUnitTableMap::COL_FK_PRODUCT;
+        return SpyProductMeasurementUnitTableMap::COL_ID_PRODUCT_MEASUREMENT_UNIT;
     }
 }
