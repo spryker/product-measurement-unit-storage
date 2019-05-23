@@ -7,20 +7,19 @@
 
 namespace Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Synchronization;
 
+use Generated\Shared\Transfer\FilterTransfer;
 use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Spryker\Shared\ProductMeasurementUnitStorage\ProductMeasurementUnitStorageConfig;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
-use Spryker\Zed\SynchronizationExtension\Dependency\Plugin\SynchronizationDataRepositoryPluginInterface;
+use Spryker\Zed\SynchronizationExtension\Dependency\Plugin\SynchronizationDataBulkRepositoryPluginInterface;
 
 /**
- * @deprecated Use \Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Synchronization\ProductMeasurementUnitSynchronizationDataBulkPlugin instead.
- *
  * @method \Spryker\Zed\ProductMeasurementUnitStorage\Persistence\ProductMeasurementUnitStorageRepositoryInterface getRepository()
  * @method \Spryker\Zed\ProductMeasurementUnitStorage\Business\ProductMeasurementUnitStorageFacadeInterface getFacade()
  * @method \Spryker\Zed\ProductMeasurementUnitStorage\Communication\ProductMeasurementUnitStorageCommunicationFactory getFactory()
  * @method \Spryker\Zed\ProductMeasurementUnitStorage\ProductMeasurementUnitStorageConfig getConfig()
  */
-class ProductMeasurementUnitSynchronizationDataPlugin extends AbstractPlugin implements SynchronizationDataRepositoryPluginInterface
+class ProductConcreteMeasurementUnitSynchronizationDataBulkPlugin extends AbstractPlugin implements SynchronizationDataBulkRepositoryPluginInterface
 {
     /**
      * {@inheritdoc}
@@ -31,7 +30,7 @@ class ProductMeasurementUnitSynchronizationDataPlugin extends AbstractPlugin imp
      */
     public function getResourceName(): string
     {
-        return ProductMeasurementUnitStorageConfig::PRODUCT_MEASUREMENT_UNIT_RESOURCE_NAME;
+        return ProductMeasurementUnitStorageConfig::PRODUCT_CONCRETE_MEASUREMENT_UNIT_RESOURCE_NAME;
     }
 
     /**
@@ -43,7 +42,7 @@ class ProductMeasurementUnitSynchronizationDataPlugin extends AbstractPlugin imp
      */
     public function hasStore(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -51,23 +50,24 @@ class ProductMeasurementUnitSynchronizationDataPlugin extends AbstractPlugin imp
      *
      * @api
      *
+     * @param int $offset
+     * @param int $limit
      * @param int[] $ids
      *
-     * @return \Generated\Shared\Transfer\SpyProductMeasurementUnitStorageEntityTransfer[]
+     * @return \Generated\Shared\Transfer\SynchronizationDataTransfer[]
      */
-    public function getData(array $ids = []): array
+    public function getData(int $offset, int $limit, array $ids = []): array
     {
         $synchronizationDataTransfers = [];
-        $productMeasurementUnitTransfers = $this->getRepository()->findProductMeasurementUnitStorageEntities($ids);
+        $filterTransfer = $this->createFilterTransfer($offset, $limit);
 
-        if (empty($ids)) {
-            $productMeasurementUnitTransfers = $this->getRepository()->findAllProductMeasurementUnitStorageEntities();
-        }
+        $productConcreteMeasurementUnitEntityTransfers = $this->getRepository()->findFilteredProductConcreteMeasurementUnitStorageEntities($filterTransfer, $ids);
 
-        foreach ($productMeasurementUnitTransfers as $productMeasurementUnitTransfer) {
+        foreach ($productConcreteMeasurementUnitEntityTransfers as $productConcreteMeasurementUnitEntityTransfer) {
             $synchronizationDataTransfer = new SynchronizationDataTransfer();
-            $synchronizationDataTransfer->setData($productMeasurementUnitTransfer->getData());
-            $synchronizationDataTransfer->setKey($productMeasurementUnitTransfer->getKey());
+            $synchronizationDataTransfer->setData($productConcreteMeasurementUnitEntityTransfer->getData());
+            $synchronizationDataTransfer->setKey($productConcreteMeasurementUnitEntityTransfer->getKey());
+            $synchronizationDataTransfer->setStore($productConcreteMeasurementUnitEntityTransfer->getStore());
             $synchronizationDataTransfers[] = $synchronizationDataTransfer;
         }
 
@@ -107,6 +107,19 @@ class ProductMeasurementUnitSynchronizationDataPlugin extends AbstractPlugin imp
      */
     public function getSynchronizationQueuePoolName(): ?string
     {
-        return $this->getFactory()->getConfig()->getProductMeasurementUnitSynchronizationPoolName();
+        return $this->getFactory()->getConfig()->getProductConcreteMeasurementUnitSynchronizationPoolName();
+    }
+
+    /**
+     * @param int $offset
+     * @param int $limit
+     *
+     * @return \Generated\Shared\Transfer\FilterTransfer
+     */
+    protected function createFilterTransfer(int $offset, int $limit): FilterTransfer
+    {
+        return (new FilterTransfer())
+            ->setOffset($offset)
+            ->setLimit($limit);
     }
 }
