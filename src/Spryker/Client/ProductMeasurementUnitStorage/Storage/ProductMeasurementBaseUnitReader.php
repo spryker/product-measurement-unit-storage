@@ -75,6 +75,10 @@ class ProductMeasurementBaseUnitReader implements ProductMeasurementBaseUnitRead
             $productMeasurementUnitIds[$idProductConcrete] = $productConcreteMeasurementUnitStorageTransfer->getBaseUnit()->getIdProductMeasurementUnit();
         }
 
+        if (!$productMeasurementUnitIds) {
+            return [];
+        }
+
         $productMeasurementUnitTransfers = $this->productMeasurementUnitReader
             ->getProductMeasurementUnits($productMeasurementUnitIds);
 

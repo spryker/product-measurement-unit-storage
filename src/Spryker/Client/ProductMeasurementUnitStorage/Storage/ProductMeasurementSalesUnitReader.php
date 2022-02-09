@@ -53,10 +53,8 @@ class ProductMeasurementSalesUnitReader implements ProductMeasurementSalesUnitRe
         $productMeasurementSalesUnitTransfers = $this->getProductMeasurementSalesUnits(
             [$productConcreteMeasurementUnitStorageTransfer],
         );
-        /** @var array<\Generated\Shared\Transfer\ProductMeasurementSalesUnitTransfer> $defaultProductMeasurementSalesUnitTransfers */
-        $defaultProductMeasurementSalesUnitTransfers = current($productMeasurementSalesUnitTransfers);
 
-        return $this->updateIsDefault($defaultProductMeasurementSalesUnitTransfers);
+        return $this->updateIsDefault(current($productMeasurementSalesUnitTransfers));
     }
 
     /**
