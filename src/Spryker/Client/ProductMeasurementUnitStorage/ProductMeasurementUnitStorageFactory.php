@@ -12,6 +12,8 @@ use Spryker\Client\ProductMeasurementUnitStorage\Dependency\Client\ProductMeasur
 use Spryker\Client\ProductMeasurementUnitStorage\Dependency\Client\ProductMeasurementUnitStorageToStoreClientInterface;
 use Spryker\Client\ProductMeasurementUnitStorage\Dependency\Service\ProductMeasurementUnitStorageToSynchronizationServiceInterface;
 use Spryker\Client\ProductMeasurementUnitStorage\Dependency\Service\ProductMeasurementUnitStorageToUtilEncodingServiceInterface;
+use Spryker\Client\ProductMeasurementUnitStorage\Expander\ProductViewMeasurementUnitExpander;
+use Spryker\Client\ProductMeasurementUnitStorage\Expander\ProductViewMeasurementUnitExpanderInterface;
 use Spryker\Client\ProductMeasurementUnitStorage\Storage\ProductConcreteMeasurementUnitStorageReader;
 use Spryker\Client\ProductMeasurementUnitStorage\Storage\ProductConcreteMeasurementUnitStorageReaderInterface;
 use Spryker\Client\ProductMeasurementUnitStorage\Storage\ProductMeasurementBaseUnitReader;
@@ -112,5 +114,12 @@ class ProductMeasurementUnitStorageFactory extends AbstractFactory
     public function getStoreClient(): ProductMeasurementUnitStorageToStoreClientInterface
     {
         return $this->getProvidedDependency(ProductMeasurementUnitStorageDependencyProvider::CLIENT_STORE);
+    }
+
+    public function createProductViewMeasurementUnitExpander(): ProductViewMeasurementUnitExpanderInterface
+    {
+        return new ProductViewMeasurementUnitExpander(
+            $this->createProductMeasurementBaseUnitReader(),
+        );
     }
 }

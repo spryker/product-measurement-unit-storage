@@ -78,4 +78,8 @@
         <property name="productMeasurementSalesUnits" type="ProductMeasurementSalesUnit[]" singular="productMeasurementSalesUnit"/>
     </transfer>
 
+    <transfer name="ProductView">
+        <property name="baseUnit" type="ProductMeasurementUnit" strict="true"/>
+    </transfer>
+
 </transfers>
