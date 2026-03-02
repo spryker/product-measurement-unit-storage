@@ -21,10 +21,6 @@ class ProductMeasurementBaseUnitReader implements ProductMeasurementBaseUnitRead
      */
     protected $productMeasurementUnitReader;
 
-    /**
-     * @param \Spryker\Client\ProductMeasurementUnitStorage\Storage\ProductConcreteMeasurementUnitStorageReaderInterface $productConcreteMeasurementUnitStorageReader
-     * @param \Spryker\Client\ProductMeasurementUnitStorage\Storage\ProductMeasurementUnitReaderInterface $productMeasurementUnitReader
-     */
     public function __construct(
         ProductConcreteMeasurementUnitStorageReaderInterface $productConcreteMeasurementUnitStorageReader,
         ProductMeasurementUnitReaderInterface $productMeasurementUnitReader
@@ -33,11 +29,6 @@ class ProductMeasurementBaseUnitReader implements ProductMeasurementBaseUnitRead
         $this->productMeasurementUnitReader = $productMeasurementUnitReader;
     }
 
-    /**
-     * @param int $idProduct
-     *
-     * @return \Generated\Shared\Transfer\ProductMeasurementUnitTransfer|null
-     */
     public function findProductMeasurementBaseUnitByIdProduct(int $idProduct): ?ProductMeasurementUnitTransfer
     {
         $productConcreteMeasurementUnitStorageTransfer = $this->productConcreteMeasurementUnitStorageReader

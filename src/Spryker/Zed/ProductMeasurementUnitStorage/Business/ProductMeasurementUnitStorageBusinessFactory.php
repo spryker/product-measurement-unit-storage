@@ -24,9 +24,6 @@ use Spryker\Zed\ProductMeasurementUnitStorage\ProductMeasurementUnitStorageDepen
  */
 class ProductMeasurementUnitStorageBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\ProductMeasurementUnitStorage\Business\Model\ProductMeasurementUnitStorageWriterInterface
-     */
     public function createProductMeasurementUnitStorageWriter(): ProductMeasurementUnitStorageWriterInterface
     {
         return new ProductMeasurementUnitStorageWriter(
@@ -36,9 +33,6 @@ class ProductMeasurementUnitStorageBusinessFactory extends AbstractBusinessFacto
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ProductMeasurementUnitStorage\Business\Model\ProductConcreteMeasurementUnitStorageWriterInterface
-     */
     public function createProductConcreteMeasurementUnitStorageWriter(): ProductConcreteMeasurementUnitStorageWriterInterface
     {
         return new ProductConcreteMeasurementUnitStorageWriter(
@@ -49,9 +43,6 @@ class ProductMeasurementUnitStorageBusinessFactory extends AbstractBusinessFacto
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ProductMeasurementUnitStorage\Business\Model\ProductConcreteMeasurementUnitStorageReaderInterface
-     */
     public function createProductConcreteMeasurementUnitStorageReader(): ProductConcreteMeasurementUnitStorageReaderInterface
     {
         return new ProductConcreteMeasurementUnitStorageReader(
@@ -59,9 +50,6 @@ class ProductMeasurementUnitStorageBusinessFactory extends AbstractBusinessFacto
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ProductMeasurementUnitStorage\Dependency\Facade\ProductMeasurementUnitStorageToProductMeasurementUnitFacadeInterface
-     */
     public function getProductMeasurementUnitFacade(): ProductMeasurementUnitStorageToProductMeasurementUnitFacadeInterface
     {
         return $this->getProvidedDependency(ProductMeasurementUnitStorageDependencyProvider::FACADE_PRODUCT_MEASUREMENT_UNIT);

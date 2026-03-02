@@ -25,49 +25,31 @@ use Spryker\Zed\ProductMeasurementUnitStorage\ProductMeasurementUnitStorageDepen
  */
 class ProductMeasurementUnitStoragePersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Orm\Zed\ProductMeasurementUnitStorage\Persistence\SpyProductMeasurementUnitStorageQuery
-     */
     public function createProductMeasurementUnitStorageQuery(): SpyProductMeasurementUnitStorageQuery
     {
         return SpyProductMeasurementUnitStorageQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\ProductMeasurementUnitStorage\Persistence\SpyProductConcreteMeasurementUnitStorageQuery
-     */
     public function createProductConcreteMeasurementUnitStorageQuery(): SpyProductConcreteMeasurementUnitStorageQuery
     {
         return SpyProductConcreteMeasurementUnitStorageQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\ProductMeasurementUnitStorage\Persistence\Propel\Mapper\ProductMeasurementUnitStorageMapperInterface
-     */
     public function createProductMeasurementUnitStorageMapper(): ProductMeasurementUnitStorageMapperInterface
     {
         return new ProductMeasurementUnitStorageMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\ProductMeasurementUnitStorage\Persistence\Propel\Mapper\ProductConcreteMeasurementUnitStorageMapperInterface
-     */
     public function createProductConcreteMeasurementUnitStorageMapper(): ProductConcreteMeasurementUnitStorageMapperInterface
     {
         return new ProductConcreteMeasurementUnitStorageMapper();
     }
 
-    /**
-     * @return \Orm\Zed\ProductMeasurementUnit\Persistence\SpyProductMeasurementSalesUnitQuery
-     */
     public function getProductMeasurementSalesUnitQuery(): SpyProductMeasurementSalesUnitQuery
     {
         return $this->getProvidedDependency(ProductMeasurementUnitStorageDependencyProvider::PROPEL_QUERY_PRODUCT_MEASUREMENT_SALES_UNIT);
     }
 
-    /**
-     * @return \Orm\Zed\ProductMeasurementUnit\Persistence\SpyProductMeasurementUnitQuery
-     */
     public function getProductMeasurementUnitQuery(): SpyProductMeasurementUnitQuery
     {
         return $this->getProvidedDependency(ProductMeasurementUnitStorageDependencyProvider::PROPEL_QUERY_PRODUCT_MEASUREMENT_UNIT);

@@ -37,12 +37,6 @@ class ProductConcreteMeasurementUnitStorageReader implements ProductConcreteMeas
      */
     protected $storeClient;
 
-    /**
-     * @param \Spryker\Client\ProductMeasurementUnitStorage\Dependency\Client\ProductMeasurementUnitStorageToStorageClientInterface $storageClient
-     * @param \Spryker\Client\ProductMeasurementUnitStorage\Dependency\Client\ProductMeasurementUnitStorageToStoreClientInterface $storeClient
-     * @param \Spryker\Client\ProductMeasurementUnitStorage\Dependency\Service\ProductMeasurementUnitStorageToSynchronizationServiceInterface $synchronizationService
-     * @param \Spryker\Client\ProductMeasurementUnitStorage\Dependency\Service\ProductMeasurementUnitStorageToUtilEncodingServiceInterface $utilEncodingService
-     */
     public function __construct(
         ProductMeasurementUnitStorageToStorageClientInterface $storageClient,
         ProductMeasurementUnitStorageToStoreClientInterface $storeClient,
@@ -55,11 +49,6 @@ class ProductConcreteMeasurementUnitStorageReader implements ProductConcreteMeas
         $this->storeClient = $storeClient;
     }
 
-    /**
-     * @param int $idProduct
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteMeasurementUnitStorageTransfer|null
-     */
     public function findProductConcreteMeasurementUnitStorage(int $idProduct): ?ProductConcreteMeasurementUnitStorageTransfer
     {
         $key = $this->generateKey($idProduct);
@@ -133,11 +122,6 @@ class ProductConcreteMeasurementUnitStorageReader implements ProductConcreteMeas
         return $productConcreteMeasurementUnitStorageTransfers;
     }
 
-    /**
-     * @param string $storageKey
-     *
-     * @return int
-     */
     protected function getIdProductConcrete(string $storageKey): int
     {
         $storageKeyArray = explode(':', $storageKey);
@@ -145,11 +129,6 @@ class ProductConcreteMeasurementUnitStorageReader implements ProductConcreteMeas
         return (int)end($storageKeyArray);
     }
 
-    /**
-     * @param array $productConcreteMeasurementUnitStorageData
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteMeasurementUnitStorageTransfer
-     */
     protected function mapToProductConcreteMeasurementUnitStorage(
         array $productConcreteMeasurementUnitStorageData
     ): ProductConcreteMeasurementUnitStorageTransfer {
@@ -157,11 +136,6 @@ class ProductConcreteMeasurementUnitStorageReader implements ProductConcreteMeas
             ->fromArray($productConcreteMeasurementUnitStorageData, true);
     }
 
-    /**
-     * @param int $idProduct
-     *
-     * @return string
-     */
     protected function generateKey(int $idProduct): string
     {
         $synchronizationDataTransfer = (new SynchronizationDataTransfer())

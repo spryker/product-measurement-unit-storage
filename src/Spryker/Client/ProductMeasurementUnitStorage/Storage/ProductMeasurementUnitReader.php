@@ -17,20 +17,12 @@ class ProductMeasurementUnitReader implements ProductMeasurementUnitReaderInterf
      */
     protected $productMeasurementUnitStorageReader;
 
-    /**
-     * @param \Spryker\Client\ProductMeasurementUnitStorage\Storage\ProductMeasurementUnitStorageReaderInterface $productMeasurementUnitStorageReader
-     */
     public function __construct(
         ProductMeasurementUnitStorageReaderInterface $productMeasurementUnitStorageReader
     ) {
         $this->productMeasurementUnitStorageReader = $productMeasurementUnitStorageReader;
     }
 
-    /**
-     * @param int $idProductMeasurementUnit
-     *
-     * @return \Generated\Shared\Transfer\ProductMeasurementUnitTransfer|null
-     */
     public function findProductMeasurementUnit(int $idProductMeasurementUnit): ?ProductMeasurementUnitTransfer
     {
         $productMeasurementUnitStorageTransfer = $this->productMeasurementUnitStorageReader->findProductMeasurementUnitStorage($idProductMeasurementUnit);
@@ -100,12 +92,6 @@ class ProductMeasurementUnitReader implements ProductMeasurementUnitReaderInterf
         return $productMeasurementUnitTransfers;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductMeasurementUnitStorageTransfer $measurementUnitStorageTransfer
-     * @param \Generated\Shared\Transfer\ProductMeasurementUnitTransfer $measurementUnitTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductMeasurementUnitTransfer
-     */
     protected function mapProductMeasurementUnit(
         ProductMeasurementUnitStorageTransfer $measurementUnitStorageTransfer,
         ProductMeasurementUnitTransfer $measurementUnitTransfer

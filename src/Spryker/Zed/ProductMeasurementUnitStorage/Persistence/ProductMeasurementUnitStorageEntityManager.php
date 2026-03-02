@@ -16,11 +16,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
  */
 class ProductMeasurementUnitStorageEntityManager extends AbstractEntityManager implements ProductMeasurementUnitStorageEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\SpyProductMeasurementUnitStorageEntityTransfer $productMeasurementUnitStorageEntityTransfer
-     *
-     * @return void
-     */
     public function saveProductMeasurementUnitStorageEntity(SpyProductMeasurementUnitStorageEntityTransfer $productMeasurementUnitStorageEntityTransfer): void
     {
         $productMeasurementUnitStorageEntityTransfer->requireFkProductMeasurementUnit();
@@ -36,11 +31,6 @@ class ProductMeasurementUnitStorageEntityManager extends AbstractEntityManager i
             ->save();
     }
 
-    /**
-     * @param int $idProductMeasurementUnitStorage
-     *
-     * @return void
-     */
     public function deleteProductMeasurementUnitStorage(int $idProductMeasurementUnitStorage): void
     {
         $spyProductMeasurementUnitStorageEntity = $this->getFactory()
@@ -51,11 +41,6 @@ class ProductMeasurementUnitStorageEntityManager extends AbstractEntityManager i
         $spyProductMeasurementUnitStorageEntity->delete();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SpyProductConcreteMeasurementUnitStorageEntityTransfer $productConcreteMeasurementUnitStorageEntityTransfer
-     *
-     * @return void
-     */
     public function saveProductConcreteMeasurementUnitStorageEntity(
         SpyProductConcreteMeasurementUnitStorageEntityTransfer $productConcreteMeasurementUnitStorageEntityTransfer
     ): void {
@@ -76,11 +61,6 @@ class ProductMeasurementUnitStorageEntityManager extends AbstractEntityManager i
             ->save();
     }
 
-    /**
-     * @param int $idProductConcreteMeasurementUnitStorage
-     *
-     * @return void
-     */
     public function deleteProductConcreteMeasurementUnitStorage(int $idProductConcreteMeasurementUnitStorage): void
     {
         $spyProductConcreteMeasurementUnitStorageEntity = $this->getFactory()

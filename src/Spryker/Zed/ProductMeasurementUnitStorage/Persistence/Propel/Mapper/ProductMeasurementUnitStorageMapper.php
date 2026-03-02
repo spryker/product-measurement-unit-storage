@@ -12,12 +12,6 @@ use Orm\Zed\ProductMeasurementUnitStorage\Persistence\SpyProductMeasurementUnitS
 
 class ProductMeasurementUnitStorageMapper implements ProductMeasurementUnitStorageMapperInterface
 {
-    /**
-     * @param \Orm\Zed\ProductMeasurementUnitStorage\Persistence\SpyProductMeasurementUnitStorage $spyProductMeasurementUnitStorageEntity
-     * @param \Generated\Shared\Transfer\SpyProductMeasurementUnitStorageEntityTransfer $productMeasurementUnitStorageEntityTransfer
-     *
-     * @return \Orm\Zed\ProductMeasurementUnitStorage\Persistence\SpyProductMeasurementUnitStorage
-     */
     public function hydrateSpyProductMeasurementUnitStorageEntity(
         SpyProductMeasurementUnitStorage $spyProductMeasurementUnitStorageEntity,
         SpyProductMeasurementUnitStorageEntityTransfer $productMeasurementUnitStorageEntityTransfer

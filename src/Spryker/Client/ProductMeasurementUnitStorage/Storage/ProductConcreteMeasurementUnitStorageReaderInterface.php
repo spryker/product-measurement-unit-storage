@@ -11,11 +11,6 @@ use Generated\Shared\Transfer\ProductConcreteMeasurementUnitStorageTransfer;
 
 interface ProductConcreteMeasurementUnitStorageReaderInterface
 {
-    /**
-     * @param int $idProduct
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteMeasurementUnitStorageTransfer|null
-     */
     public function findProductConcreteMeasurementUnitStorage(int $idProduct): ?ProductConcreteMeasurementUnitStorageTransfer;
 
     /**

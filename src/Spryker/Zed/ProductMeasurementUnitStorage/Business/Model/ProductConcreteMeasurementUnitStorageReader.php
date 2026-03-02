@@ -20,9 +20,6 @@ class ProductConcreteMeasurementUnitStorageReader implements ProductConcreteMeas
      */
     protected $productMeasurementUnitFacade;
 
-    /**
-     * @param \Spryker\Zed\ProductMeasurementUnitStorage\Dependency\Facade\ProductMeasurementUnitStorageToProductMeasurementUnitFacadeInterface $productMeasurementUnitFacade
-     */
     public function __construct(ProductMeasurementUnitStorageToProductMeasurementUnitFacadeInterface $productMeasurementUnitFacade)
     {
         $this->productMeasurementUnitFacade = $productMeasurementUnitFacade;

@@ -27,9 +27,6 @@ use Spryker\Client\ProductMeasurementUnitStorage\Storage\ProductMeasurementUnitS
 
 class ProductMeasurementUnitStorageFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Client\ProductMeasurementUnitStorage\Storage\ProductMeasurementUnitStorageReaderInterface
-     */
     public function createProductMeasurementUnitStorageReader(): ProductMeasurementUnitStorageReaderInterface
     {
         return new ProductMeasurementUnitStorageReader(
@@ -39,9 +36,6 @@ class ProductMeasurementUnitStorageFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\ProductMeasurementUnitStorage\Storage\ProductConcreteMeasurementUnitStorageReaderInterface
-     */
     public function createProductConcreteMeasurementUnitStorageReader(): ProductConcreteMeasurementUnitStorageReaderInterface
     {
         return new ProductConcreteMeasurementUnitStorageReader(
@@ -52,9 +46,6 @@ class ProductMeasurementUnitStorageFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\ProductMeasurementUnitStorage\Storage\ProductMeasurementBaseUnitReaderInterface
-     */
     public function createProductMeasurementBaseUnitReader(): ProductMeasurementBaseUnitReaderInterface
     {
         return new ProductMeasurementBaseUnitReader(
@@ -63,9 +54,6 @@ class ProductMeasurementUnitStorageFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\ProductMeasurementUnitStorage\Storage\ProductMeasurementUnitReaderInterface
-     */
     public function createProductMeasurementUnitReader(): ProductMeasurementUnitReaderInterface
     {
         return new ProductMeasurementUnitReader(
@@ -73,9 +61,6 @@ class ProductMeasurementUnitStorageFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\ProductMeasurementUnitStorage\Storage\ProductMeasurementSalesUnitReaderInterface
-     */
     public function createProductMeasurementSalesUnitReader(): ProductMeasurementSalesUnitReaderInterface
     {
         return new ProductMeasurementSalesUnitReader(
@@ -84,33 +69,21 @@ class ProductMeasurementUnitStorageFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\ProductMeasurementUnitStorage\Dependency\Client\ProductMeasurementUnitStorageToStorageClientInterface
-     */
     public function getStorageClient(): ProductMeasurementUnitStorageToStorageClientInterface
     {
         return $this->getProvidedDependency(ProductMeasurementUnitStorageDependencyProvider::CLIENT_STORAGE);
     }
 
-    /**
-     * @return \Spryker\Client\ProductMeasurementUnitStorage\Dependency\Service\ProductMeasurementUnitStorageToSynchronizationServiceInterface
-     */
     public function getSynchronizationService(): ProductMeasurementUnitStorageToSynchronizationServiceInterface
     {
         return $this->getProvidedDependency(ProductMeasurementUnitStorageDependencyProvider::SERVICE_SYNCHRONIZATION);
     }
 
-    /**
-     * @return \Spryker\Client\ProductMeasurementUnitStorage\Dependency\Service\ProductMeasurementUnitStorageToUtilEncodingServiceInterface
-     */
     public function getUtilEncodingService(): ProductMeasurementUnitStorageToUtilEncodingServiceInterface
     {
         return $this->getProvidedDependency(ProductMeasurementUnitStorageDependencyProvider::SERVICE_UTIL_ENCODING);
     }
 
-    /**
-     * @return \Spryker\Client\ProductMeasurementUnitStorage\Dependency\Client\ProductMeasurementUnitStorageToStoreClientInterface
-     */
     public function getStoreClient(): ProductMeasurementUnitStorageToStoreClientInterface
     {
         return $this->getProvidedDependency(ProductMeasurementUnitStorageDependencyProvider::CLIENT_STORE);

@@ -12,33 +12,13 @@ use Generated\Shared\Transfer\SpyProductMeasurementUnitStorageEntityTransfer;
 
 interface ProductMeasurementUnitStorageEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\SpyProductMeasurementUnitStorageEntityTransfer $productMeasurementUnitStorageEntityTransfer
-     *
-     * @return void
-     */
     public function saveProductMeasurementUnitStorageEntity(SpyProductMeasurementUnitStorageEntityTransfer $productMeasurementUnitStorageEntityTransfer): void;
 
-    /**
-     * @param int $idProductMeasurementUnitStorage
-     *
-     * @return void
-     */
     public function deleteProductMeasurementUnitStorage(int $idProductMeasurementUnitStorage): void;
 
-    /**
-     * @param \Generated\Shared\Transfer\SpyProductConcreteMeasurementUnitStorageEntityTransfer $productConcreteMeasurementUnitStorageEntityTransfer
-     *
-     * @return void
-     */
     public function saveProductConcreteMeasurementUnitStorageEntity(
         SpyProductConcreteMeasurementUnitStorageEntityTransfer $productConcreteMeasurementUnitStorageEntityTransfer
     ): void;
 
-    /**
-     * @param int $idProductConcreteMeasurementUnitStorage
-     *
-     * @return void
-     */
     public function deleteProductConcreteMeasurementUnitStorage(int $idProductConcreteMeasurementUnitStorage): void;
 }

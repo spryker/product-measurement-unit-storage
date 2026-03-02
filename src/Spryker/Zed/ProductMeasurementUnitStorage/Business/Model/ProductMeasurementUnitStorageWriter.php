@@ -31,11 +31,6 @@ class ProductMeasurementUnitStorageWriter implements ProductMeasurementUnitStora
      */
     protected $productMeasurementUnitStorageEntityManager;
 
-    /**
-     * @param \Spryker\Zed\ProductMeasurementUnitStorage\Dependency\Facade\ProductMeasurementUnitStorageToProductMeasurementUnitFacadeInterface $productMeasurementUnitFacade
-     * @param \Spryker\Zed\ProductMeasurementUnitStorage\Persistence\ProductMeasurementUnitStorageRepositoryInterface $productMeasurementUnitStorageRepository
-     * @param \Spryker\Zed\ProductMeasurementUnitStorage\Persistence\ProductMeasurementUnitStorageEntityManagerInterface $productMeasurementUnitStorageEntityManager
-     */
     public function __construct(
         ProductMeasurementUnitStorageToProductMeasurementUnitFacadeInterface $productMeasurementUnitFacade,
         ProductMeasurementUnitStorageRepositoryInterface $productMeasurementUnitStorageRepository,
@@ -69,12 +64,6 @@ class ProductMeasurementUnitStorageWriter implements ProductMeasurementUnitStora
         $this->deleteStorageEntities($mappedProductMeasurementUnitStorageEntities);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SpyProductMeasurementUnitStorageEntityTransfer $productMeasurementUnitStorageEntity
-     * @param \Generated\Shared\Transfer\ProductMeasurementUnitTransfer $productMeasurementUnitTransfer
-     *
-     * @return void
-     */
     protected function saveStorageEntity(
         SpyProductMeasurementUnitStorageEntityTransfer $productMeasurementUnitStorageEntity,
         ProductMeasurementUnitTransfer $productMeasurementUnitTransfer

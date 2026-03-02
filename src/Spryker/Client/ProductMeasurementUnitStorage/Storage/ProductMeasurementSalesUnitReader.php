@@ -24,10 +24,6 @@ class ProductMeasurementSalesUnitReader implements ProductMeasurementSalesUnitRe
      */
     protected $productMeasurementUnitReader;
 
-    /**
-     * @param \Spryker\Client\ProductMeasurementUnitStorage\Storage\ProductConcreteMeasurementUnitStorageReaderInterface $productConcreteMeasurementUnitStorageReader
-     * @param \Spryker\Client\ProductMeasurementUnitStorage\Storage\ProductMeasurementUnitReaderInterface $productMeasurementUnitReader
-     */
     public function __construct(
         ProductConcreteMeasurementUnitStorageReaderInterface $productConcreteMeasurementUnitStorageReader,
         ProductMeasurementUnitReaderInterface $productMeasurementUnitReader
@@ -181,12 +177,6 @@ class ProductMeasurementSalesUnitReader implements ProductMeasurementSalesUnitRe
         return $productMeasurementSalesUnitTransfers;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConcreteMeasurementSalesUnitTransfer $concreteMeasurementSalesUnitTransfer
-     * @param \Generated\Shared\Transfer\ProductMeasurementSalesUnitTransfer $measurementSalesUnitTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductMeasurementSalesUnitTransfer
-     */
     protected function mapProductMeasurementSalesUnitTransfer(
         ProductConcreteMeasurementSalesUnitTransfer $concreteMeasurementSalesUnitTransfer,
         ProductMeasurementSalesUnitTransfer $measurementSalesUnitTransfer

@@ -38,11 +38,6 @@ class ProductMeasurementUnitStorageReader implements ProductMeasurementUnitStora
      */
     protected $utilEncodingService;
 
-    /**
-     * @param \Spryker\Client\ProductMeasurementUnitStorage\Dependency\Client\ProductMeasurementUnitStorageToStorageClientInterface $storageClient
-     * @param \Spryker\Client\ProductMeasurementUnitStorage\Dependency\Service\ProductMeasurementUnitStorageToSynchronizationServiceInterface $synchronizationService
-     * @param \Spryker\Client\ProductMeasurementUnitStorage\Dependency\Service\ProductMeasurementUnitStorageToUtilEncodingServiceInterface $utilEncodingService
-     */
     public function __construct(
         ProductMeasurementUnitStorageToStorageClientInterface $storageClient,
         ProductMeasurementUnitStorageToSynchronizationServiceInterface $synchronizationService,
@@ -53,11 +48,6 @@ class ProductMeasurementUnitStorageReader implements ProductMeasurementUnitStora
         $this->utilEncodingService = $utilEncodingService;
     }
 
-    /**
-     * @param int $idProductMeasurementUnit
-     *
-     * @return \Generated\Shared\Transfer\ProductMeasurementUnitStorageTransfer|null
-     */
     public function findProductMeasurementUnitStorage(int $idProductMeasurementUnit): ?ProductMeasurementUnitStorageTransfer
     {
         $key = $this->getGeneratedStorageKey((string)$idProductMeasurementUnit);
@@ -135,11 +125,6 @@ class ProductMeasurementUnitStorageReader implements ProductMeasurementUnitStora
         return $productConcreteMeasurementUnitStorageTransfers;
     }
 
-    /**
-     * @param array $productMeasurementUnitIds
-     *
-     * @return array
-     */
     protected function generateKeys(array $productMeasurementUnitIds): array
     {
         $productMeasurementUnitStorageKeys = [];
@@ -166,11 +151,6 @@ class ProductMeasurementUnitStorageReader implements ProductMeasurementUnitStora
         return $mappingKeys;
     }
 
-    /**
-     * @param string $reference
-     *
-     * @return string
-     */
     protected function getGeneratedStorageKey(string $reference): string
     {
         return $this->synchronizationService
@@ -178,11 +158,6 @@ class ProductMeasurementUnitStorageReader implements ProductMeasurementUnitStora
             ->generateKey((new SynchronizationDataTransfer())->setReference($reference));
     }
 
-    /**
-     * @param array $productMeasurementUnitStorageData
-     *
-     * @return \Generated\Shared\Transfer\ProductMeasurementUnitStorageTransfer
-     */
     protected function mapToProductMeasurementUnitStorage(array $productMeasurementUnitStorageData): ProductMeasurementUnitStorageTransfer
     {
         return (new ProductMeasurementUnitStorageTransfer())->fromArray($productMeasurementUnitStorageData, true);

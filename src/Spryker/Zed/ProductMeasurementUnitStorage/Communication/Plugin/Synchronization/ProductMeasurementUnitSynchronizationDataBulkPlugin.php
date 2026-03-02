@@ -100,12 +100,6 @@ class ProductMeasurementUnitSynchronizationDataBulkPlugin extends AbstractPlugin
         return $this->getFactory()->getConfig()->getProductMeasurementUnitSynchronizationPoolName();
     }
 
-    /**
-     * @param int $offset
-     * @param int $limit
-     *
-     * @return \Generated\Shared\Transfer\FilterTransfer
-     */
     protected function createFilterTransfer(int $offset, int $limit): FilterTransfer
     {
         return (new FilterTransfer())
