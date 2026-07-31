@@ -59,6 +59,8 @@ class ProductViewMeasurementUnitExpanderPluginTest extends Unit
 
     /**
      * @dataProvider expandProductViewTransferDataProvider
+     *
+     * @param array<string, mixed>|null $storageData
      */
     public function testGivenProductViewTransferWhenExpandingWithMeasurementUnitThenBaseUnitIsSetCorrectly(
         ProductViewTransfer $productViewTransfer,
